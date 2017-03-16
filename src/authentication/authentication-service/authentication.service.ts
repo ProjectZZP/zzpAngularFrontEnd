@@ -1,14 +1,19 @@
-import {AuthenticationInterface, AuthenticationStatus} from '../index';
-
+import {Http} from '@angular/http';
 import {BehaviorSubject} from 'rxjs';
+import {AuthenticationInterface, AuthenticationStatus} from '../index';
 
 
 
 export class AuthenticationService implements AuthenticationInterface {
   private status: BehaviorSubject<AuthenticationInterface>;
 
-  constructor() {
+  constructor(private http: Http) {
     this.status = new BehaviorSubject<AuthenticationInterface>(new AuthenticationStatus(null, false));
+  }
+
+  public login(username: string) {
+    // for now:
+    this.status.next(new AuthenticationStatus(username, true));
   }
 
   get isLoggedIn(): boolean {
