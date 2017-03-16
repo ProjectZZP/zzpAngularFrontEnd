@@ -1,9 +1,10 @@
+import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {BehaviorSubject} from 'rxjs';
 import {AuthenticationInterface, AuthenticationStatus} from '../index';
 
 
-
+@Injectable()
 export class AuthenticationService implements AuthenticationInterface {
   private status: BehaviorSubject<AuthenticationInterface>;
 
