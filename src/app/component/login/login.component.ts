@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from '../../authentication/authentication-service/authentication.service';
 
 @Component({
     selector: 'app-login',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    title = 'app works!';
+    constructor(private authentication: AuthenticationService) {}
 }
