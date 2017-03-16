@@ -1,20 +1,21 @@
-import {Http, BaseRequestOptions, ResponseOptions, Response} from '@angular/http';
+import {HttpModule, Http, ConnectionBackend, BaseRequestOptions, ResponseOptions, Response, RequestOptions} from '@angular/http';
 import {TestBed, inject } from '@angular/core/testing';
-import {MockBackend} from '@angular/http/testing';
+import { MockBackend} from '@angular/http/testing';
 
-import {AuthenticationService } from '../index';
+import {AuthenticationService} from './authentication.service';
 
 describe('AuthenticationService: ', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [
+                HttpModule
+            ],
             providers: [
-                AuthenticationService,
-                BaseRequestOptions,
-                {
-                    provide: Http, useFactory: (mockBackend: MockBackend, options: BaseRequestOptions) =>
-                    new Http(mockBackend, options), deps: [MockBackend, BaseRequestOptions]
-                },
-                MockBackend
+                MockBackend,
+                {provide: RequestOptions, useClass: BaseRequestOptions},
+                {provide: ConnectionBackend, useClass: MockBackend},
+                Http,
+                AuthenticationService
             ]
         });
     });
