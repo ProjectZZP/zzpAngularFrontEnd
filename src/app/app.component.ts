@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from "./authentication/authentication-service/authentication.service";
+import {Router} from '@angular/router';
+import {AuthenticationInterface, AuthenticationService} from "./authentication/index";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,15 @@ import {AuthenticationService} from "./authentication/authentication-service/aut
 export class AppComponent implements OnInit {
 
   constructor(private authentication: AuthenticationService,
-              private router: Router,
-              private route: ActivatedRoute) {
+              private router: Router) {
 
+    this.authentication
+        .onStatus
+        .subscribe((status: AuthenticationInterface) => {
+          if (!status.isLoggedIn) {
+            this.router.navigateByUrl('/login');
+          }
+        });
   }
 
   ngOnInit(): void {

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {AuthenticationService} from '../../authentication/authentication-service/authentication.service';
+import {FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthenticationInterface, AuthenticationService} from '../../authentication/index';
 
 @Component({
     selector: 'app-login',
@@ -7,5 +9,21 @@ import {AuthenticationService} from '../../authentication/authentication-service
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    constructor(private authentication: AuthenticationService) {}
+    username: FormControl;
+    
+    constructor(private authentication: AuthenticationService,
+                private router: Router) {
+        this.username = new FormControl();
+    }
+
+    login(): boolean {
+        this.authentication
+            .login(this.username.value)
+            .subscribe((status: AuthenticationInterface) => {
+                if (status.isLoggedIn) {
+                    this.router.navigateByUrl('/');
+                }
+            });
+        return false;
+    }
 }

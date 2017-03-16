@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from '../../authentication/index';
 
 @Component({
     selector: 'app-home',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    title = 'app works!';
+
+    constructor(public authentication: AuthenticationService) {
+    }
+
+    logout(): boolean {
+        console.log('logout');
+        this.authentication.logout();
+        return false;
+    }
 }

@@ -12,9 +12,16 @@ export class AuthenticationService implements AuthenticationInterface {
     this.status = new BehaviorSubject<AuthenticationInterface>(new AuthenticationStatus(null, false));
   }
 
-  public login(username: string) {
+  public login(username: string): Observable<AuthenticationInterface> {
     // for now:
-    this.status.next(new AuthenticationStatus(username, true));
+    setTimeout(() => this.status.next(new AuthenticationStatus(username, true)), 1);
+
+    return this.status.asObservable();
+  }
+
+  public logout(): void {
+    // for now:
+    this.status.next(new AuthenticationStatus(null, false));
   }
 
   get onStatus(): Observable<AuthenticationInterface> {
