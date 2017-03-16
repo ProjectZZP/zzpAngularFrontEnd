@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {AuthenticationInterface, AuthenticationStatus} from '../index';
 
 
@@ -15,6 +15,10 @@ export class AuthenticationService implements AuthenticationInterface {
   public login(username: string) {
     // for now:
     this.status.next(new AuthenticationStatus(username, true));
+  }
+
+  get onStatus(): Observable<AuthenticationInterface> {
+    return this.status.asObservable();
   }
 
   get isLoggedIn(): boolean {
