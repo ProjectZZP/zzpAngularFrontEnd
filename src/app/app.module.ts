@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import {AuthenticationService} from "../authentication/index";
+import {AuthenticationService} from '../authentication/index';
+import {appRoutingProviders} from './app.routing';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,10 @@ import {AuthenticationService} from "../authentication/index";
     FormsModule,
     HttpModule
   ],
-  providers: [AuthenticationService],
+  providers: [
+    appRoutingProviders,
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
