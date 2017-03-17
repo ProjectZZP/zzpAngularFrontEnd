@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {AuthenticationInterface, AuthenticationStatus} from '../index';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable()
@@ -13,8 +14,16 @@ export class AuthenticationService implements AuthenticationInterface {
   }
 
   public login(username: string): Observable<AuthenticationInterface> {
-    // for now:
-    setTimeout(() => this.status.next(new AuthenticationStatus(username, true)), 1);
+    this.http
+        .post(environment.loginUrl, {userId:username}, this.createOptions())
+        .do((res: Response) => console.log(res.text()))
+        .map((res: Response) => res.json())
+        .do((json: any) => console.log(json))
+        .subscribe((json: any) => {
+          this.status.next(new AuthenticationStatus(username, true));
+        });
+
+    //setTimeout(() => this.status.next(new AuthenticationStatus(username, true)), 1);
 
     return this.status.asObservable();
   }
@@ -34,5 +43,12 @@ export class AuthenticationService implements AuthenticationInterface {
 
   get username(): string {
     return this.status.getValue().username;
+  }
+
+  private createOptions(): RequestOptions {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    return new RequestOptions({ headers: headers });
   }
 }
