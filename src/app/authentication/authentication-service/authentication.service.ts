@@ -17,7 +17,6 @@ export class AuthenticationService implements AuthenticationInterface {
     return this.http
         .post(environment.loginUrl, {userId:username}, this.createOptions())
         .map((res: Response) => res.json())
-        .do((json: any) => console.log(json))
         .map((json: any) => new AuthenticationStatus(json.userId, username, !!json.userId))
         .do((status: AuthenticationInterface) => this.status.next(status));
   }

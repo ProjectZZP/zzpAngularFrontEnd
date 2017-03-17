@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationInterface, AuthenticationService} from "./authentication/index";
 
@@ -7,7 +7,7 @@ import {AuthenticationInterface, AuthenticationService} from "./authentication/i
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   constructor(private authentication: AuthenticationService,
               private router: Router) {
@@ -19,11 +19,5 @@ export class AppComponent implements OnInit {
             this.router.navigateByUrl('/login');
           }
         });
-  }
-
-  ngOnInit(): void {
-    if (!this.authentication.isLoggedIn) {
-      this.router.navigateByUrl('/login');
-    }
   }
 }

@@ -16,7 +16,6 @@ export class EntityService {
     return this.http
         .get(environment.entityUrl, this.createOptions())
         .map((res: Response) => res.json())
-        .do((json: any) => console.log(json))
         .map((json: any) => new Entity(json.entityId, json.userId, json.name, json.description));
   }
 
