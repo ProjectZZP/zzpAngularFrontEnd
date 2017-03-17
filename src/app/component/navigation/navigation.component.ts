@@ -8,7 +8,11 @@ import {AuthenticationService} from '../../authentication/index';
 })
 export class NavigationComponent {
 
-    constructor(public authentication: AuthenticationService) {
+    constructor(private authentication: AuthenticationService) {
+    }
+
+    isLoggedIn(): boolean {
+        return this.authentication.isLoggedIn;
     }
 
     logout(): boolean {
