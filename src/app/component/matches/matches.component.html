@@ -1,3 +1,15 @@
-<div *ngFor="let profileId of profileIds">
-    <app-profile [profileId]="profileId"></app-profile>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <div *ngIf="profileIds.length == 0">
+                <p>Please select profile first!</p>
+            </div>
+
+            <div *ngFor="let profileId of profileIds">
+                <app-profile [profileId]="profileId"></app-profile>
+            </div>
+
+        </div>
+    </div>
 </div>
