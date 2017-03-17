@@ -11,7 +11,7 @@ export class MatchService {
 
     getListOfProfileIds(profileId: string): Observable<Array<string>> {
         return this.http
-            .get(environment.matcherUrl + '?profileId' + profileId, this.createOptions())
+            .get(environment.matcherUrl + '?profileId=' + profileId, this.createOptions())
             .map((res: Response) => res.json())
             .do((json: any) => console.log(json));
     }
