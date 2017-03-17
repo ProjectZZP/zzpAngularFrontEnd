@@ -1,14 +1,29 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
-import {Observable} from 'rxjs';
-import {Profile} from "../index";
+import {Observable, BehaviorSubject} from 'rxjs';
+import {Profile} from '../index';
 import {environment} from '../../../environments/environment';
 
 
 @Injectable()
 export class ProfileService {
+  profile: BehaviorSubject<Profile>;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+    this.profile = new BehaviorSubject<Profile>(null);
+  }
+
+  get currentProfile(): Profile {
+    return this.profile.getValue();
+  }
+
+  set currentProfile(profile: Profile) {
+    this.profile.next(profile);
+  }
+
+  onProfile(): Observable<Profile> {
+    return this.profile.asObservable();
+  }
 
   getSingleProfile(profileId: string): Observable<Profile> {
     return this.http
