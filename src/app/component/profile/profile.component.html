@@ -1,24 +1,24 @@
 <div class="card">
     <h3 class="card-header">Match?</h3>
-    <div class="card-block">
+    <div *ngIf="!!profile" class="card-block">
         <div class="row">
             <div class="hidden-sm-down col-sm-3 col-md-2">
                 <img src="http://placehold.it/350x350" class="img-fluid" width="350" height="350">
             </div>
             <div class="col-sm-10 col-md-8">
-                <h4 class="match-title">{{ title }}</h4>
+                <h4 class="match-title">{{ profile.title }}</h4>
                 <div class="match-info">
                     <div class="result-city"><strike>Amsterdam</strike></div>
                     <div class="result-tags">Match:
                         <ul>
-                            <li *ngFor="let tag of tags">
+                            <li *ngFor="let tag of profile.tags">
                                 {{ tag }}
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <p class="card-text">{{ description }}</p>
+                <p class="card-text">{{ profile.description }}</p>
             </div>
         </div>
     </div>
