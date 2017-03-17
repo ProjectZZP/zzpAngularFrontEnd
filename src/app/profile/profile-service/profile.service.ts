@@ -25,11 +25,18 @@ export class ProfileService {
     return this.profile.asObservable();
   }
 
+  setSingleProfile(profileId: string): Observable<Profile> {
+    return this.http
+        .get(environment.profileUrl + '/' + profileId, this.createOptions())
+        .map((res: Response) => res.json())
+        .map((json: any) => new Profile(json.profileId, json.entityId, json.title, json.description, json.tags))
+        .do((profile: Profile) => this.profile.next(profile));
+  }
+
   getSingleProfile(profileId: string): Observable<Profile> {
     return this.http
         .get(environment.profileUrl + '/' + profileId, this.createOptions())
         .map((res: Response) => res.json())
-        .do((json: any) => console.log(json))
         .map((json: any) => new Profile(json.profileId, json.entityId, json.title, json.description, json.tags));
   }
 
