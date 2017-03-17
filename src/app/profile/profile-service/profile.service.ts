@@ -8,13 +8,13 @@ import {environment} from '../../../environments/environment';
 @Injectable()
 export class ProfileService {
 
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http) {}
 
   getSingleProfile(profileId: string): Observable<Profile> {
     return this.http
         .get(environment.profileUrl + '/' + profileId, this.createOptions())
         .map((res: Response) => res.json())
+        .do((json: any) => console.log(json))
         .map((json: any) => new Profile(json.profileId, json.entityId, json.title, json.description, json.tags));
   }
 
