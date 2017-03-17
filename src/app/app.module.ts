@@ -8,6 +8,7 @@ import {appRoutingProviders, routing} from './app.routing';
 import {HomeComponent, LoginComponent, NavigationComponent, EntityComponent} from './component/index';
 import {AppComponent} from './app.component';
 import {ProfileService} from './profile/index';
+import {EntityService} from "./entity/entity-service/entity.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ProfileService} from './profile/index';
   providers: [
     AuthenticationService,
     ProfileService,
-    appRoutingProviders
+    appRoutingProviders,
+    EntityService
   ],
   bootstrap: [
     AppComponent

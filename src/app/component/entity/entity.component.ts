@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-
-import { Entity }    from './entity';
+import {Component} from '@angular/core';
+import {EntityService} from "../../entity/entity-service/entity.service";
+import {Entity} from "../../entity/entity/entity";
 
 @Component({
   moduleId: module.id,
@@ -8,10 +8,14 @@ import { Entity }    from './entity';
   templateUrl: 'entity.component.html'
 })
 export class EntityComponent {
+  model: Entity;
 
-  model = new Entity(null, '', '', '');
+  constructor(private entityService: EntityService) {
+    // this.model = new Entity(null, '', '', '');
 
-  submitted = false;
-
-  onSubmit() { this.submitted = true; }
+    this.entityService.getSingleEntity('')
+      .subscribe((entity: Entity) => {
+        this.model = entity;
+      })
+  }
 }

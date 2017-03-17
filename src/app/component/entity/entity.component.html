@@ -4,7 +4,7 @@
 
             <h1>My Entity Info</h1>
 
-            <form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+            <form *ngIf="!!model" (ngSubmit)="onSubmit()" #entityForm="ngForm">
                 <div class="form-group">
                     <label for="entityId">entityId</label>
                     <input type="text" class="form-control" id="entityId" required [(ngModel)]="model.entityId" name="entityId">
