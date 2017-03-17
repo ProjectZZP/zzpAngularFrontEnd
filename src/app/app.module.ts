@@ -7,6 +7,7 @@ import {AuthenticationService} from './authentication/index';
 import {appRoutingProviders, routing} from './app.routing';
 import {HomeComponent, LoginComponent, NavigationComponent} from './component/index';
 import {AppComponent} from './app.component';
+import {ProfileService} from './profile/index';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {AppComponent} from './app.component';
   ],
   providers: [
     AuthenticationService,
+    ProfileService,
     appRoutingProviders
   ],
   bootstrap: [
