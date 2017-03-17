@@ -5,16 +5,18 @@ import {RouterModule} from '@angular/router';
 import {HttpModule } from '@angular/http';
 import {AuthenticationService} from './authentication/index';
 import {appRoutingProviders, routing} from './app.routing';
-import {HomeComponent, LoginComponent, NavigationComponent, EntityComponent} from './component/index';
+import {HomeComponent, LoginComponent, MatchesComponent, NavigationComponent, EntityComponent} from './component/index';
 import {AppComponent} from './app.component';
 import {ProfileService} from './profile/index';
-import {EntityService} from "./entity/entity-service/entity.service";
+import {EntityService} from './entity/entity-service/entity.service';
+import {MatchService} from './match/match-service/match-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    MatchesComponent,
     NavigationComponent,
     EntityComponent
   ],
@@ -30,7 +32,8 @@ import {EntityService} from "./entity/entity-service/entity.service";
     AuthenticationService,
     ProfileService,
     appRoutingProviders,
-    EntityService
+    EntityService,
+    MatchService
   ],
   bootstrap: [
     AppComponent

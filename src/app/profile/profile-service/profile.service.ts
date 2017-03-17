@@ -18,6 +18,13 @@ export class ProfileService {
         .map((json: any) => new Profile(json.profileId, json.entityId, json.title, json.description, json.tags));
   }
 
+  getAllMyProfileIds(): Observable<Array<string>> {
+    return this.http
+        .get(environment.profileUrl, this.createOptions())
+        .map((res: Response) => res.json())
+        .do((json: any) => console.log(json));
+  }
+
   private createOptions(): RequestOptions {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
