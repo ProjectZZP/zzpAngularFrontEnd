@@ -9,6 +9,7 @@ import {HomeComponent, LoginComponent, NavigationComponent, EntityComponent} fro
 import {AppComponent} from './app.component';
 import {ProfileService} from './profile/index';
 import {EntityService} from "./entity/entity-service/entity.service";
+import {ProfileComponent} from "./component/profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {EntityService} from "./entity/entity-service/entity.service";
     HomeComponent,
     LoginComponent,
     NavigationComponent,
-    EntityComponent
+    EntityComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

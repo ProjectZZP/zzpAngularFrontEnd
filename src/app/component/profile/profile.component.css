@@ -1,0 +1,19 @@
+.card {
+    margin-bottom: 2em;
+}
+
+.match-info {
+    margin-bottom: 1em;
+}
+
+.match-actions {
+    font-size: 48px;
+}
+
+.match-action-up a {
+    color: green;
+}
+
+.match-action-down a {
+    color: red;
+}
