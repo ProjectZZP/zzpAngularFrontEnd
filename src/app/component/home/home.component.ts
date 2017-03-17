@@ -12,7 +12,6 @@ export class HomeComponent {
     }
 
     logout(): boolean {
-        console.log('logout');
         this.authentication.logout();
         return false;
     }

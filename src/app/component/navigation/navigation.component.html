@@ -13,13 +13,14 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" [routerLink]="[ '/entity' ]">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link 2</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
+                <button *ngIf="authentication.isLoggedIn" class="btn btn-primary" (click)="logout()">Logout</button>
                 <a *ngIf="!authentication.isLoggedIn" [routerLink]="[ '/login' ]" class="btn btn-outline-success my-2 my-sm-0">Login</a>
             </form>
         </div>

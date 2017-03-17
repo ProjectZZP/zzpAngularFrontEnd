@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {HttpModule } from '@angular/http';
 import {AuthenticationService} from './authentication/index';
 import {appRoutingProviders, routing} from './app.routing';
-import {HomeComponent, LoginComponent, NavigationComponent} from './component/index';
+import {HomeComponent, LoginComponent, NavigationComponent, EntityComponent} from './component/index';
 import {AppComponent} from './app.component';
 
 @NgModule({
@@ -13,7 +13,8 @@ import {AppComponent} from './app.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavigationComponent
+    NavigationComponent,
+    EntityComponent
   ],
   imports: [
     BrowserModule,

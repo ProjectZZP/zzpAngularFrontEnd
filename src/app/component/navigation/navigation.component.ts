@@ -10,4 +10,9 @@ export class NavigationComponent {
 
     constructor(public authentication: AuthenticationService) {
     }
+
+    logout(): boolean {
+        this.authentication.logout();
+        return false;
+    }
 }
