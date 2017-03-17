@@ -2,5 +2,5 @@ import {AuthenticationInterface} from '../authentication-interface/authenticatio
 
 
 export class AuthenticationStatus implements AuthenticationInterface {
-  constructor(public username: string, public isLoggedIn: boolean) {}
+  constructor(public userId: string, public username: string, public isLoggedIn: boolean) {}
 }

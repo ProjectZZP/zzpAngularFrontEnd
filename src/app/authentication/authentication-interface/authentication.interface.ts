@@ -1,4 +1,5 @@
 export interface AuthenticationInterface {
-  isLoggedIn: boolean;
+  userId: string;
   username: string;
+  isLoggedIn: boolean;
 }
