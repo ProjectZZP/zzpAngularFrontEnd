@@ -5,7 +5,9 @@
             <p>You are logged in as: {{authentication.username}}</p>
 
             <ul>
-                <li *ngFor="let profileId of profileIds" (click)="setProfile(profileId)">{{ profileId }}</li>
+                <li *ngFor="let profileId of profileIds">
+                    <a (click)="setProfile(profileId)">{{ profileId }}</a>
+                </li>
             </ul>
         </div>
     </div>
